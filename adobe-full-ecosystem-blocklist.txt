@@ -1,0 +1,96 @@
+! ========================================================
+! ADOBE FULL-ECOSYSTEM BLOCKLIST — AdGuard Home
+! 策略：宁杀错别放过（全量阻断，含功能/误伤域）
+! 语法：||domain^ = 匹配该域及其所有子域
+! 合流：两份清单合并去重 + 补齐核心收集域族 + 国内节点
+! 生成：2026-10-29
+! ========================================================
+
+! ── 1. 主品牌根域 / 登录 / 多国验证（阻断后无法登录激活）
+||adobe.com^
+||adobe.io^
+||adobe.net^
+||adobelogin.com^
+||adobelogin.com.cn^
+||adobe.com.cn^
+||adobe.de^
+||adobe.fr^
+||adobe.co.uk^
+||adobe-governance.com^
+
+! ── 2. 正版验证 / 许可服务（Genuine + LCS 许可）
+||adobegenuine.com^
+! 注：以下 *.adobe.io / *.adobe.com 子域已被第 1 组根域覆盖，
+!     仅作标注留存；如需显式阻断可取消注释
+! lcs-cops.adobe.io
+! lcs-rocs.adobe.io
+! ic.adobe.io
+! cc-api-data.adobe.io
+! v3.api.cc.adobe.io
+! prod.adobe.com
+! crl.adobe.com
+! scandata.adobe.com
+
+! ── 3. 遥测 / 数据收集 / 运行组件
+||adobestats.io^
+||adobecc.com^
+||adobecces.com^
+||adobeccstatic.com^
+||adobedtm.com^
+||adobe-services.com^
+||adobesc.com^
+||adobess.com^
+||adobejanus.com^
+||adobe-identity.com^
+||adobesunbreak.com^
+||adobetag.com^
+||adobeprojectm.com^
+||adobegov.com^
+||adobeexchange.com^
+||adobeoobe.com^
+||adobedc.net^
+||adobeedge.net^
+||adobeaemcloud.com^
+||adobelanding.com^
+||adobeimages.com^
+||adobecqms.net^
+
+! ── 4. 核心收集 / 追踪域族（合流补齐，原两份均缺失）
+||2o7.net^
+||omtrdc.net^
+||demdex.net^
+||everesttech.net^
+||everestjs.net^
+||omniture.com^
+||adobedc.cn^
+||scene7.com^
+||tubemogul.com^
+||marketo.net^
+||mktoresp.com^
+
+! ── 5. 独立主程序 / 子品牌
+||photoshop.com^
+||acroipm.com^
+
+! ── 6. 创意生态 / 字体 / 素材 / 社区（功能+追踪混合，误伤区）
+||typekit.com^
+||typekit.net^
+||ftcdn.net^
+||behance.net^
+
+! ── 7. 官方网络端点补充（Adobe 收购品牌 + AI/云服务独立域）
+||adobesensei.io^
+||adbecrsl.com^
+||adbephotos.com^
+||creativecloud.com^
+||myportfolio.com^
+||astockcdn.net^
+||adobe.ly^
+||frame.io^
+||marketo.com^
+||magento.com^
+||workfront.com^
+
+! ── 8. 第三方基础设施（Adobe 依赖，拦了会误伤非 Adobe 服务，慎用）
+! arkoselabs.com      # Adobe 登录人机验证码（Arkose Labs）
+! crashlytics.com     # Adobe 用 Firebase Crashlytics 做崩溃遥测
